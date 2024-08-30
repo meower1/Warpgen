@@ -1,0 +1,52 @@
+services:
+  warpgen:
+    container_name: warpgen
+    build:
+      context: .
+    networks:
+      - main
+    healthcheck:
+      test:
+        [
+          "CMD",
+          "curl",
+          "--include",
+          "--request",
+          "GET",
+          "http://localhost:8000/health",
+        ]
+      interval: 5s
+      timeout: 20s
+      retries: 10
+    command: ["uvicorn", "app.main:app", "--host", "0.0.0.0", "--port", "8000"]
+    restart: on-failure:5
+
+  nginx:
+    container_name: warpgen-nginx
+    build: nginx
+    ports:
+      - 80:80
+      - 443:443
+    depends_on:
+      - warpgen
+    networks:
+      - main
+    healthcheck:
+      test:
+        [
+          "CMD",
+          "curl",
+          "--include",
+          "--request",
+          "GET",
+          "https://localhost:443/health",
+          "-k",
+        ]
+      interval: 5s
+      timeout: 20s
+      retries: 10
+    restart: unless-stopped
+
+networks:
+  main:
+    driver: bridge

@@ -1,0 +1,93 @@
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background: linear-gradient(135deg, #ff6a00, #ffca00);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  position: relative;
+}
+
+.container {
+  text-align: center;
+}
+
+.subscription-box {
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  display: inline-block;
+}
+
+.key-box {
+  font-size: 1.2em;
+  font-weight: bold;
+  margin: 10px 0;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.button-container {
+  display: flex;
+  gap: 10px; /* Add space between the buttons */
+  justify-content: center; /* Center the buttons */
+}
+
+button {
+  background-color: #ff6a00;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 1em;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+button:hover {
+  background-color: #ff8c00;
+}
+
+button svg {
+  margin-left: 8px;
+}
+
+.footer {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%; /* Ensure the footer takes up the full width */
+  background-color: white;
+  font-family: sans-serif;
+  padding: 1px 0; /* Add some padding for a bit of spacing vertically */
+  box-shadow: 0 -2px 4px rgba(0, 0, 0, 0.1); /* Optional: add a subtle shadow for depth */
+}
+
+.footer-content {
+  margin-left: 10px; /* Add margin to create distance from the left */
+  font-family: monospace;
+}
+
+.glow {
+  animation: glow 1.5s infinite alternate;
+  text-weight: bold;
+  /* font-family: cursive; */
+}
+
+@keyframes glow {
+  from {
+    text-weight: bold;
+    text-shadow: 0 0 10px yellow, 0 0 20px yellow, 0 0 30px yellow;
+    color: yellow;
+  }
+  to {
+    text-weight: bold;
+    text-shadow: 0 0 10px orange, 0 0 20px orange, 0 0 30px orange;
+    color: orange;
+  }
+}
